@@ -536,7 +536,8 @@ height: 2px;
                                 <th scope="col">precio</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Imagen</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">editar</th>
+                                <th scope="col">eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -547,15 +548,19 @@ height: 2px;
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td><img src="{{ $product->image }}" width="100px" height="70px"></td>
-                                    <td>
-                                        <a href="{{ url('showProductDashboard/' . $product->id) }}" style="text-decoration: auto;">
+                                    <td><a href="{{ url('showProductDashboard/' . $product->id) }}" style="text-decoration: auto;">
                                             <button type="button" class="btn btn-primary">Editar</button>
-                                        </a>
-                                        <form action="{{ url('destroyProduct/'.$product->id) }}" method="POST">
+                                        </a></td>
+                                     <td> <form action="{{ url('destroyProduct/'.$product->id) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                    </td>
+                                        </form> </td>
+                                        
+                                        
+                                       
+                                     
+                                     
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
+   public $mensaje;
     public function index()
     {
         $products = Product::get();
@@ -54,14 +55,20 @@ class ProductController extends Controller
             $quantityActual = $discountProduct->quantity;
 
             $result = $quantityActual - $request->quantity;
-
+            json_decode($result);
+if ($result <=  0) {
+     $mensaje = "no hay mas productos";
+}else{
+       $mensaje = "si hay productos";
+}
             $discountProduct->update([
                 'quantity' => $result
+               
             ]);
-
             $products = Product::get();
             DB::commit();
-            return view('welcome', ['products' => $products]);
+           return view('welcome', ['products' => $products]);
+            
         } catch (\Throwable $th) {
             DB::rollBack();
             return $th->getMessage();
