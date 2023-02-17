@@ -4,8 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
 class UserController extends Controller
 {
+
+    public function pdf()
+    {
+    $users = User::get();
+    $pdf = Pdf::loadView('pdf',['users' => $users]);
+    return $pdf->download('users.pdf');
+    }
+
+
     public function index()
     {
         $users = User::get();
@@ -60,4 +70,5 @@ class UserController extends Controller
             return $th->getMessage();
         }
     }
+
 }

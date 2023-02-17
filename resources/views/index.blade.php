@@ -27,7 +27,14 @@
 
         </div>
     </div>
+ 
+    
+            <a type="button" href="{{ route('pdf') }} "  class="btn btn-warning btn-sm "   data-bs-target="#staticBackdrop">
+                PDF
+                 </a>
 
+        
+   
  
 
     <div class="container">

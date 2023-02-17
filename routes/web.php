@@ -23,8 +23,7 @@ Route::get('show-product/{id}', [ProductController::class, 'show']);
 Route::post('storeProduct', [ProductController::class, 'store']);
 
 Route::post('storeProductDashboard', [ProductController::class, 'storeProduct']);
-
-Auth::routes();
+ 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -41,3 +40,10 @@ Route::get('update-user/{id}', [UserController::class, 'updateUser']);
 Route::post('actualizar-usuario/{id}', [UserController::class, 'updateUserId']);
 Route::post('delete-user', [UserController::class, 'deleteUser']);
 Route::get('/index', [App\Http\Controllers\UserController::class, 'index'])->name('index');
+ 
+Route::get('/pdf', [App\Http\Controllers\UserController::class, 'pdf'])->name('pdf');
+
+
+
+ 
+ 
