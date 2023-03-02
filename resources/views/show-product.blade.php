@@ -1,81 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-<div class="container mt-5">
-        <div class="d-flex justify-content-center">
-
-
-
-
-
-
-
-
-
-
-        <h1 class="text-center">comprar</h1>
-
  
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+<!-- Scripts -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center">{{ __('Registrar  Datos  para continuar') }}</div>
 
-
-    <div class="panel panel-default mt-5 ml-4">
-        <div class="panel-body">
-            <div class="container">
-           
-                <div class="row">
-
-                    <div class="col-md-6">
-                      
-                        <form action="{{ url('storeProduct') }}" method="POST">
-                            @csrf
+                <div class="card-body">
+                <form action="{{ url('storeProduct') }}" method="POST">
+                        @csrf
+                        
                             <input type="hidden" name="id" value="{{ $id }}">
                             <input type="hidden" name="password" value="123456789">
 
 
-                             <div  class="col-md-12">
-                                <label for="exampleInputEmail1" class="form-label">Nombre completo</label>
-                                <input  type="text" name="name" placeholder="Example juan diego al..." class="form-control"  aria-describedby="emailHelp">
-                              </div>
+                            <input type="hidden" name="id" value="{{ $id }}">
+                            <!-- <input type="hidden" name="password" value="123456789"> -->
 
-                            <div  class="col-md-12">
-                                <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-                                <input type="text" name="email" placeholder="Example@gmail.com" class="form-control"  aria-describedby="emailHelp">
-                            </div>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
-                            <div  class="col-md-12">
-                                <label for="exampleInputEmail1" class="form-label">Cantidad</label>
-                                <input type="number" name="quantity" placeholder="Example ... 1" class="form-control"  aria-describedby="emailHelp">
-                            </div>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                            <div  class="col-md-12">
-                                <label for="exampleInputEmail1" class="form-label">direccion entrega</label>
-                                <input type="text" name="address" placeholder="Example cra 16 # 22 a" class="form-control"  aria-describedby="emailHelp">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="lastname" class="col-md-4 col-form-label text-md-end">{{ __('lastname') }}</label>
 
-                            <div class="col-md-12 text-center">
-                                <br>
-                               <button type="submit" class="btn btn-success">Comprar ahora</button>
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+
+                                @error('lastname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="quantity" class="col-md-4 col-form-label text-md-end">{{ __('quantity') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="quantity" type="quantity" class="form-control" name="quantity" required autocomplete="quantity">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="address" class="form-control" name="address" required autocomplete="address">
+                            </div>
+                        </div>
+                        
+                         
+
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('comprar') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </div>
-</div>
-</body>
+ 
 
-</html>
-<script> 
-Swal.fire("prueba de alerta")</script>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+pruebas  -->

@@ -96,6 +96,9 @@
                                         <td>
                                             <div>{{ $item['name'] }} </div>
                                         </td>
+                                        <td><div>
+                                            {{$item['lastname']}}
+                                        </div></td>
 
                                         <td>
                                             <div>{{ $item['email'] }}</div>
@@ -202,3 +205,23 @@
 </body>
 
 </html>
+ 
+
+
+
+ 
+
+<center> 
+<?php
+ 
+ 
+
+for ($i=0; $i <=$contador; $i++) { 
+
+   for ($x=0; $x<$i ; $x++) { 
+  
+    echo " *";
+   }  echo "<br>";
+
+}
+?></center>

@@ -31,6 +31,7 @@ class ProductController extends Controller
         try {
             User::create([
                 'name' => $request->name,
+                'lastname' => $request->lastname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ]);
@@ -56,11 +57,7 @@ class ProductController extends Controller
 
             $result = $quantityActual - $request->quantity;
             json_decode($result);
-if ($result <=  0) {
-     $mensaje = "no hay mas productos";
-}else{
-       $mensaje = "si hay productos";
-}
+ 
             $discountProduct->update([
                 'quantity' => $result
                

@@ -29,6 +29,7 @@ class UserController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'lastname'=>$request->lastname,
                 'password' => Hash::make($request->password),
              ]);
         
@@ -49,6 +50,7 @@ class UserController extends Controller
         try {
             $user = User::find($request->id)->update([
                 'name' => $request->name,
+                'lastname'=>$request->lastneme,
                 'email' => $request->email,
                 'password' => $request->password,
              ]);
