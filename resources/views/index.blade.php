@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!doctype html>
 <html lang="en">
 
@@ -225,3 +228,5 @@ for ($i=0; $i <=$contador; $i++) {
 
 }
 ?></center>
+
+@endsection

@@ -4,6 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\EmpleadoController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +35,10 @@ Route::get('showProductDashboard/{id}', [HomeController::class, 'showProduct']);
 Route::post('updateProductDashboard', [HomeController::class, 'updateProduct']);
 
 Route::post('destroyProduct/{id}', [HomeController::class, 'destroyProduct']);
+
+
+ 
+Route::resource('empleado',EmpleadoController::class);
+ 
+
+ 

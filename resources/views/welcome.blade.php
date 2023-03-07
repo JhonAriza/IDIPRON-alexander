@@ -99,7 +99,7 @@
             @foreach ($products as $product)
                 <div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" src="{{ $product->image }}  " />
+                        <img class="group list-group-image" src="{{  $product->image }}  " />
                         <div class="caption text-center">
                             <h4 class="group inner list-group-item-heading">{{ $product->name }}</h4>
                             <p class="group inner list-group-item-text">{{ $product->description }}</p>
