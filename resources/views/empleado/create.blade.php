@@ -19,7 +19,7 @@
 </html>
  
 
-<form action="{{ url('/empleado') }} " method="POST" enctype="multipart/form-data">
+<form action="{{ url('/empleado') }} "   class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
 @csrf
 <h1>crear datos</h1>
 @include('empleado.form',['modo'=>'Crear'])
@@ -27,4 +27,3 @@
 
 
 @endsection
-

@@ -24,13 +24,25 @@
 {{ Session::get('mensaje') }}
 @endif
 
- <a href="  {{url('empleado/create')}}">registrar nuevo</a>
-    
-         
+    <div class="row"> 
+        <div class="col"> 
+</div>
+        <div class="col"></div>
+        <div class="col"> <div class="btn-group"  role="group" aria-label="Basic outlined example">
+  <a type="button"  href=" {{url('empleado/create')}}"  class="btn btn-outline-info">new</a>
+  <a type="button"  href=" {{url('empleado/create')}}"   class="btn btn-outline-primary">crear nuevo</a>
+  <a type="button"  href=" {{url('empleado/create')}}"  class="btn btn-outline-warning">+</a>
+</div></div>
+        <div class="col"></div>
+        <div class="col"> <form class="d-flex"  action="{{ route('empleado.index' )}}" methods="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
+         <input type="submit" value="énviar" >
+      </form>
+ </div>
+        <div class="col"></div>
+    </div>
+         <br>
 
-        
-   
- 
 
     <div class="container">
         <div class="row">
@@ -52,8 +64,8 @@
                     <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" href="#collapseOne{{$contador}}">
                  
-                        <td>
-                            {{ $item['name'] }}
+                        <td class="" style="color: red;"> 
+                            {{ $item['name'] }}    {{ $item['apellido'] }}
                         </td>
                     </button>
                     </h2>
@@ -64,51 +76,73 @@
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th>
-                                            id
+                                            Consecutivo
+                                        </th>
+                                        <th>
+                                           Image
                                         </th>
 
                                         <th>
                                             name
                                         </th>
                                         <th>
-                                            cargo del empleado
+                                           Apellido
                                         </th>
                                         <th>
-                                            fecha y hora creacion
+                                            cargo
+                                        </th>
+                                        <th>
+                                            fechaDB
                                         </th>
 
                                         <th>
-                                            foto
+                                        Hora inicio
                                         </th>
-
+                                        <th>
+                                        fecha contrato
+                                        </th>
+                                       
+                                        <th>
+                                           acciones
+                                        </th>
+                                        <th>
+                                       
+                                        </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <div>{{ $item->id }} </div>
+                                            <div>FG{{ $item->id }} </div>
                                         </td>
+                                        <td>
+                                       
+                                                 
+                                       <img src="{{ asset('storage').'/'.$item->Foto }}" style="width: 100px; height:100px;">
+                             
+                              </td>
                                         <td>
                                             <div>{{ $item->name }} </div>
                                         </td>
+                                        <td>
+                                            <div>{{ $item->apellido }} </div>
+                                        </td>
                                         <td><div>
-                                               {{  $item->cargo_id }}
+                                        {{$item->cargo->nombreCargo}}
+                                        </div>
+                                       </td>
+                                        <td>
+                                            <div> {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</div>
+                                        </td>
+<td> <div>
+                                       {{ \Carbon\Carbon::parse($item->hora)->format('h:i:s A') }}
                                         </div>
                                     </td>
-
-                                   
-                                        <td>
-                                            <div> {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y  h:i:s A') }}</div>
+                                    <td>
+                                            <div> {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}</div>
                                         </td>
-
-
-                                        <td>
-                                            <div>
-                                                 
-                                                 <img src="{{ asset('storage').'/'.$item->Foto }}" style="width: 150px; height:150px;">
-                                         </div>
-                                        </td>
+                                       
 <td>                                             <a href="{{ url('/empleado/'.$item->id.'/edit') }}"  class="btn btn-success">Editar </a>
 </td>
 

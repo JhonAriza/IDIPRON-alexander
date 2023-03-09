@@ -6,23 +6,33 @@ use App\Models\Empleado;
 use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class EmpleadoController extends Controller
 {
+    public $search = '';
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datos['empleados']=Empleado::paginate(10);
+        $busqueda = $request->busqueda;
+        $datos['empleados']= Empleado::where('name',  'like', '%' . $busqueda . '%')
+        ->orwhere('apellido','like', '%' . $busqueda . '%')
+            ->paginate(10);
+       
+
+          
     
+      
+      
+
+         
+        $cargo['cargos']=Cargo::paginate(10);
  
-         return view('empleado.index',$datos);
-      
-     
-      
+         return view('empleado.index',$datos,$cargo);   
     }
 
     /**
@@ -30,8 +40,9 @@ class EmpleadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    { 
+    public function create(Request $request)
+    {  
+
           $cargo['cargos']=Cargo::paginate(10);
         return view('empleado.create',$cargo);
     }
@@ -43,7 +54,9 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {     $datosEmpleado = request()->except(['_token']);
+    {  
+
+        $datosEmpleado = request()->except(['_token']);
          if ($request->hasfile('Foto')) {
              $datosEmpleado['Foto']=$request->file('Foto')->store('uploads','public');
          }

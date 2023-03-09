@@ -83,7 +83,7 @@ class ProductController extends Controller
 
             Product::create([
                 'name' => $request->name,
-                'image' => 'http://prueba-alexander.test/Image/'.$filename,
+                'image' => 'http://localhost.public/Image/'.$filename,
                 'price' => $request->price,
                 'description' => $request->description,
                 'quantity' => $request->quantity,
