@@ -35,10 +35,13 @@ Route::get('showProductDashboard/{id}', [HomeController::class, 'showProduct']);
 Route::post('updateProductDashboard', [HomeController::class, 'updateProduct']);
 
 Route::post('destroyProduct/{id}', [HomeController::class, 'destroyProduct']);
-
+ 
 
  
+Route::get('/graficas', [App\Http\Controllers\UserController::class, 'graficas'])->name('graficas');
 Route::resource('empleado',EmpleadoController::class);
  
+  
+Route::get('/index', [App\Http\Controllers\UserController::class, 'index'])->name('index');
 
- 
+Route::get('/pdf', [App\Http\Controllers\UserController::class, 'pdf'])->name('pdf');
