@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->time('hora');
+            $table->date('date');
             $table->string('apellido');
             $table->bigInteger('cargo_id')->unsigned();
             $table->string('Foto');
