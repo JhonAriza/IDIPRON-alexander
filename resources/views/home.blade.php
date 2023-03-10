@@ -442,9 +442,11 @@ height: 2px;
                         <a class="text-decoration-none" href="#">{{ Auth::user()->name }}</a>
                     </h5>
                 </div>
-        </div>  
+        </div>      
+        
+ 
         <ul class="categories list-unstyled">
-          
+
             <li class="has-dropdown">
                 <i class="uil-estate fa-fw"></i><a href="#"> Panel Administrativo</a>
                 <ul class="sidebar-dropdown list-unstyled">
@@ -492,6 +494,8 @@ height: 2px;
                     <form action="{{ url('storeProductDashboard') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <section class="statistics mt-4">
+                        <a type="button"  href=" {{url('graficas')}}"   class="btn btn-outline-primary">crear grafica de productos mas vendidos</a>
+
                             <div class="row">
                                 <h1>crear </h1>
                                 <h1 class="text-center">Cargar Productos</h1>

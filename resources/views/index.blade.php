@@ -228,5 +228,9 @@ for ($i=0; $i <=$contador; $i++) {
 
 }
 ?></center>
+ 
 
 @endsection
+
+
+ 

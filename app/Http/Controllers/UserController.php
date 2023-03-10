@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
+use App\Models\ProductUser;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -15,11 +18,20 @@ class UserController extends Controller
     return $pdf->download('users.pdf');
     }
 
+    public function graficas()
+    {
+        $ProductUser = User::get();
+     
+   
+        return view('graficas',$ProductUser);
+    }
 
     public function index()
     {
         $users = User::get();
-        return view('index', ['users' => $users]);
+     
+        $ProductUser['ProductUser']=ProductUser::paginate(10);
+        return view('index', ['users' => $users],$ProductUser);
     }
 
  
